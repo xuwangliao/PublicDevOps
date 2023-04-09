@@ -1,16 +1,16 @@
 
 # Deployment Config
 
-resourcegroup_name = "<ResourceGroup>"
+resourcegroup_name = "azDevTFtest"
 
-location = "<location>"
+location = "aus-central"
 
 tags = {
   "Environment" = "Lab"
-  "Owner"       = "<Owner>"
+  "Owner"       = "Alex Liao"
 }
 
-vnet_name = "<VNet Name>"
+vnet_name = "TFVnet"
 
 vnet_address_space = ["10.211.0.0/16"]
 
