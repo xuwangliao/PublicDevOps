@@ -45,7 +45,8 @@ stages:
             inputs:
               targetType: 'inline'
               script: |
-                ls $(System.DefaultWorkingDirectory)
+                cd $(System.DefaultWorkingDirectory)
+                ls
 
   - stage: tfdeploy
     condition: succeeded('tfvalidate')
