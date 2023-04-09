@@ -1,25 +1,25 @@
 variable "bkstrgrg" {
   type        = string
   description = "The name of the backend storage account resource group"
-  default     = "tfrgtest01"
+  default     = "<storage act resource group name>"
 }
 
 variable "bkstrg" {
   type        = string
   description = "The name of the backend storage account"
-  default     = "tfstoragetest01"
+  default     = "<storage account name>"
 }
 
 variable "bkcontainer" {
   type = string
   description = "The container name for the backend config"
-  default = "tfcontainer01"
+  default = "<blob storage container name>"
 }
 
 variable "bkstrgkey" {
   type = string
   description = "The access key for the storage account"
-  default = "WcsPOcleQi7MlNKCZf+VUJOY0qTeidGhrZSCiPtfD1P36+zmLWv4GbbCSWXDee/H+M2JvDmvxosw+AStGX0QHA=="
+  default = "<storage account key>"
 }
 
 variable "resourcegroup_name" {
