@@ -33,11 +33,13 @@ stages:
               targetType: 'inline'
               script: |
                 # Write your commands here
+                cd '$(System.DefaultWorkingDirectory)/$(projectfolder)'
                 ls
+                # ls
 
-                mv '$(System.DefaultWorkingDirectory)/$(projectfolder)/**' '$(System.DefaultWorkingDirectory)'
+                # mv '$(System.DefaultWorkingDirectory)/$(projectfolder)/**' '$(System.DefaultWorkingDirectory)'
 
-                ls
+                # ls
           - task: TerraformInstaller@1
             displayName: tfinstall
             inputs:
