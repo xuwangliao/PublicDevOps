@@ -1,16 +1,16 @@
 
 # Deployment Config
 
-resourcegroup_name = "<ResourceGroup>"
+resourcegroup_name = "tfautomationtest02"
 
-location = "<location>"
+location = "australiacentral"
 
 tags = {
   "Environment" = "Lab"
   "Owner"       = "<Owner>"
 }
 
-vnet_name = "<VNet Name>"
+vnet_name = "tfvnet"
 
 vnet_address_space = ["10.211.0.0/16"]
 
