@@ -46,7 +46,7 @@ stages:
             inputs:
               provider: 'azurerm'
               command: 'init'
-              # workingDirectory: '$(System.DefaultWorkingDirectory)/$(projectfolder)'
+              workingDirectory: '$(System.DefaultWorkingDirectory)/$(projectfolder)'
               backendServiceArm: 'tf-service-connection'
               backendAzureRmResourceGroupName: '$(bkstrgrg)'
               backendAzureRmStorageAccountName: '$(bkstrg)'
@@ -79,14 +79,14 @@ stages:
               backendAzureRmStorageAccountName: '$(bkstrg)'
               backendAzureRmContainerName: '$(bkcontainer)'
               backendAzureRmKey: '$(bkstrgkey)'
-              # workingDirectory: '$(System.DefaultWorkingDirectory)/$(projectfolder)'
+              workingDirectory: '$(System.DefaultWorkingDirectory)/$(projectfolder)'
           - task: TerraformTaskV4@4
             displayName: plan
             inputs:
               provider: 'azurerm'
               command: 'plan'
               environmentServiceNameAzureRM: 'tf-service-connection'
-              # workingDirectory: '$(System.DefaultWorkingDirectory)/$(projectfolder)'
+              workingDirectory: '$(System.DefaultWorkingDirectory)/$(projectfolder)'
           - task: TerraformTaskV4@4
             displayName: apply
             inputs:
