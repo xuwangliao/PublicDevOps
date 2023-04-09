@@ -13,6 +13,7 @@ variables:
   bkstrg: 'tfstoragetest01'
   bkcontainer: 'tfcontainer01'
   bkstrgkey: 'devpipeline.terraform.tfstate'
+  projectfolder: 'Azure DevOps and Terraform Pipelines'
 
 stages:
   - stage: tfvalidate
@@ -68,12 +69,12 @@ stages:
               backendAzureRmStorageAccountName: '$(bkstrg)'
               backendAzureRmContainerName: '$(bkcontainer)'
               backendAzureRmKey: '$(bkstrgkey)'
-        
           - task: TerraformTaskV4@4
             displayName: plan
             inputs:
               provider: 'azurerm'
               command: 'plan'
+              workingDirectory: '$(System.DefaultWorkingDirectory)\$(projectfolder)'
               environmentServiceNameAzureRM: 'tf-service-connection'
           - task: TerraformTaskV4@4
             displayName: apply
