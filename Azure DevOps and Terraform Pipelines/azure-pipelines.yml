@@ -41,11 +41,12 @@ stages:
               command: 'validate'
           
           - task: Bash@3
+            displayName: show directory elememnt
             inputs:
               targetType: 'inline'
               script: |
                 ls $(System.DefaultWorkingDirectory)
-                
+
   - stage: tfdeploy
     condition: succeeded('tfvalidate')
     dependsOn: tfvalidate
