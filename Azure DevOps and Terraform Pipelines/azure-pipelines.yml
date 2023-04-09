@@ -35,7 +35,7 @@ stages:
                 # Write your commands here
                 ls
 
-                mv $(System.DefaultWorkingDirectory)\$(projectfolder)\* $(System.DefaultWorkingDirectory)
+                mv $(System.DefaultWorkingDirectory)/$(projectfolder)/* $(System.DefaultWorkingDirectory)
 
                 ls
           - task: TerraformInstaller@1
