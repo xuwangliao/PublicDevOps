@@ -35,11 +35,6 @@ stages:
                 # Write your commands here
                 cd '$(System.DefaultWorkingDirectory)/$(projectfolder)'
                 ls
-                # ls
-
-                # mv '$(System.DefaultWorkingDirectory)/$(projectfolder)/**' '$(System.DefaultWorkingDirectory)'
-
-                # ls
           - task: TerraformInstaller@1
             displayName: tfinstall
             inputs:
@@ -51,6 +46,7 @@ stages:
             inputs:
               provider: 'azurerm'
               command: 'init'
+              workingDirectory: '$(System.DefaultWorkingDirectory)/$(projectfolder)'
               backendServiceArm: 'tf-service-connection'
               backendAzureRmResourceGroupName: '$(bkstrgrg)'
               backendAzureRmStorageAccountName: '$(bkstrg)'
