@@ -32,6 +32,8 @@ stages:
             displayName: tfinstall
             inputs:
               terraformVersion: 'latest'
+              
+            
           - task: TerraformTaskV4@4
             displayName: init
             inputs:
@@ -48,6 +50,7 @@ stages:
             inputs:
               provider: 'azurerm'
               command: 'validate'
+              workingDirectory: '$(System.DefaultWorkingDirectory)\$(projectfolder)'
     
 
   - stage: tfdeploy
@@ -70,15 +73,18 @@ stages:
               backendAzureRmStorageAccountName: '$(bkstrg)'
               backendAzureRmContainerName: '$(bkcontainer)'
               backendAzureRmKey: '$(bkstrgkey)'
+              workingDirectory: '$(System.DefaultWorkingDirectory)\$(projectfolder)'
           - task: TerraformTaskV4@4
             displayName: plan
             inputs:
               provider: 'azurerm'
               command: 'plan'
               environmentServiceNameAzureRM: 'tf-service-connection'
+              workingDirectory: '$(System.DefaultWorkingDirectory)\$(projectfolder)'
           - task: TerraformTaskV4@4
             displayName: apply
             inputs:
               provider: 'azurerm'
               command: 'apply'
               environmentServiceNameAzureRM: 'tf-service-connection'
+              workingDirectory: '$(System.DefaultWorkingDirectory)\$(projectfolder)'
