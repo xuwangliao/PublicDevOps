@@ -21,12 +21,22 @@ stages:
       - job: validate
         continueOnError: false
         steps:
+          # - task: Bash@3
+          #   displayName: print directory folder
+          #   inputs:
+          #     targetType: 'inline'
+          #     script: |
+          #       echo "ls"
+          #       ls
           - task: Bash@3
-            displayName: print directory folder
             inputs:
               targetType: 'inline'
               script: |
-                echo "ls"
+                # Write your commands here
+                ls
+
+                mv $(System.DefaultWorkingDirectory)\$(projectfolder)\* $(System.DefaultWorkingDirectory)
+
                 ls
           - task: TerraformInstaller@1
             displayName: tfinstall
@@ -83,4 +93,4 @@ stages:
               provider: 'azurerm'
               command: 'apply'
               environmentServiceNameAzureRM: 'tf-service-connection'
-              workingDirectory: '$(System.DefaultWorkingDirectory)\$(projectfolder)'
+              # workingDirectory: '$(System.DefaultWorkingDirectory)\$(projectfolder)'
