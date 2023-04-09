@@ -42,6 +42,7 @@ stages:
               backendAzureRmStorageAccountName: '$(bkstrg)'
               backendAzureRmContainerName: '$(bkcontainer)'
               backendAzureRmKey: '$(bkstrgkey)'
+              workingDirectory: '$(System.DefaultWorkingDirectory)\$(projectfolder)'
           - task: TerraformTaskV4@4
             displayName: validate 
             inputs:
@@ -74,7 +75,6 @@ stages:
             inputs:
               provider: 'azurerm'
               command: 'plan'
-              workingDirectory: '$(System.DefaultWorkingDirectory)\$(projectfolder)'
               environmentServiceNameAzureRM: 'tf-service-connection'
           - task: TerraformTaskV4@4
             displayName: apply
