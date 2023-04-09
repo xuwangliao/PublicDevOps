@@ -39,6 +39,13 @@ stages:
             inputs:
               provider: 'azurerm'
               command: 'validate'
+          
+          - task: Bash@3
+            inputs:
+              targetType: 'inline'
+              script: |
+                ls $(System.DefaultWorkingDirectory)
+                
   - stage: tfdeploy
     condition: succeeded('tfvalidate')
     dependsOn: tfvalidate
@@ -59,6 +66,12 @@ stages:
               backendAzureRmStorageAccountName: '$(bkstrg)'
               backendAzureRmContainerName: '$(bkcontainer)'
               backendAzureRmKey: '$(bkstrgkey)'
+          
+          - task: Bash@3
+            inputs:
+              targetType: 'inline'
+              script: |
+                ls $(System.DefaultWorkingDirectory)
           - task: TerraformTaskV4@4
             displayName: plan
             inputs:
