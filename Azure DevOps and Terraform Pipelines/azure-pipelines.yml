@@ -20,6 +20,13 @@ stages:
       - job: validate
         continueOnError: false
         steps:
+          - task: Bash@3
+            displayName: print directory folder
+            inputs:
+              targetType: 'inline'
+              script: |
+                echo "ls"
+                ls
           - task: TerraformInstaller@1
             displayName: tfinstall
             inputs:
@@ -39,14 +46,7 @@ stages:
             inputs:
               provider: 'azurerm'
               command: 'validate'
-          
-          - task: Bash@3
-            displayName: show directory elememnt
-            inputs:
-              targetType: 'inline'
-              script: |
-                cd $(System.DefaultWorkingDirectory)
-                ls
+    
 
   - stage: tfdeploy
     condition: succeeded('tfvalidate')
@@ -68,12 +68,7 @@ stages:
               backendAzureRmStorageAccountName: '$(bkstrg)'
               backendAzureRmContainerName: '$(bkcontainer)'
               backendAzureRmKey: '$(bkstrgkey)'
-          
-          - task: Bash@3
-            inputs:
-              targetType: 'inline'
-              script: |
-                ls $(System.DefaultWorkingDirectory)
+        
           - task: TerraformTaskV4@4
             displayName: plan
             inputs:
